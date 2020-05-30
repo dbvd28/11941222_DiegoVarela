@@ -20,7 +20,7 @@ public class Persona {
     private String estado;
     private double altura;
     private double peso;
-    private ArrayList<String> mensajes = new ArrayList();
+    private ArrayList<Mensaje> mensajes = new ArrayList();
 
     public Persona(int id, String nombre, int edad, String sexo, String estado, double altura, double peso) {
         this.id = id;
@@ -88,17 +88,17 @@ public class Persona {
         this.peso = peso;
     }
 
-    public ArrayList<String> getMensajes() {
+    public ArrayList<Mensaje> getMensajes() {
         return mensajes;
     }
 
-    public void setMensajes(ArrayList<String> mensajes) {
+    public void setMensajes(ArrayList<Mensaje> mensajes) {
         this.mensajes = mensajes;
     }
 
     @Override
     public String toString() {
-        return "id=" + id + ", nombre=" + nombre + ", edad=" + edad + '}';
+        return   nombre + ", edad=" + edad + '}';
     }
 
 }

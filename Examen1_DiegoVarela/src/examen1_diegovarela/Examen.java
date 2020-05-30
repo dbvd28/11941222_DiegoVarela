@@ -21,6 +21,7 @@ public class Examen extends javax.swing.JFrame {
 
     ArrayList<Persona> personas = new ArrayList();
     ArrayList<Objetos> objetos = new ArrayList();
+    ArrayList<Mensaje> mensajes = new ArrayList();
 
     /**
      * Creates new form Examen
@@ -136,6 +137,9 @@ public class Examen extends javax.swing.JFrame {
         jb_eliminarpers = new javax.swing.JButton();
         jb_eliminarobjetos = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jt_mensajes = new javax.swing.JTable();
+        jb_mostrarmsj = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -177,6 +181,15 @@ public class Examen extends javax.swing.JFrame {
         rb_zapatos = new javax.swing.JRadioButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         ta_descripciono = new javax.swing.JTextArea();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        cb_emisor = new javax.swing.JComboBox<>();
+        cb_receptor = new javax.swing.JComboBox<>();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        ta_mensaje = new javax.swing.JTextArea();
+        jButton4 = new javax.swing.JButton();
 
         jLabel11.setText("Usuario:");
 
@@ -731,7 +744,7 @@ public class Examen extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(jLabel48)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_emodpers)
                     .addComponent(jb_emodobjetos))
@@ -835,7 +848,7 @@ public class Examen extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jb_listarobjetos)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         Agregar_panel.addTab("Listar", jPanel3);
@@ -904,23 +917,59 @@ public class Examen extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jb_eliminarobjetos)))
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addContainerGap(311, Short.MAX_VALUE))
         );
 
         Agregar_panel.addTab("Eliminar", jPanel4);
+
+        jt_mensajes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Emisor", "Mensaje", "Receptor"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane9.setViewportView(jt_mensajes);
+
+        jb_mostrarmsj.setText("Mostrar mensajes");
+        jb_mostrarmsj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_mostrarmsjMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 537, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(206, 206, 206)
+                .addComponent(jb_mostrarmsj)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 413, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
+                .addComponent(jb_mostrarmsj)
+                .addGap(0, 236, Short.MAX_VALUE))
         );
 
-        Agregar_panel.addTab("Mensaje", jPanel5);
+        Agregar_panel.addTab("Mensajes enviados", jPanel5);
 
         jLabel1.setText("Agregar persona");
 
@@ -1207,6 +1256,76 @@ public class Examen extends javax.swing.JFrame {
 
         Agregar_panel.addTab("Agregar", jPanel1);
 
+        jLabel46.setText("Emisor:");
+
+        jLabel50.setText("Mensaje:");
+
+        jLabel51.setText("Receptor:");
+
+        ta_mensaje.setColumns(20);
+        ta_mensaje.setRows(5);
+        jScrollPane8.setViewportView(ta_mensaje);
+
+        jButton4.setText("Enviar mensaje");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(jLabel51)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cb_receptor, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(jLabel46)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cb_emisor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel50)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(jButton4)))
+                .addContainerGap(145, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel46)
+                    .addComponent(cb_emisor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel50)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel51)
+                    .addComponent(cb_receptor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(84, 84, 84)
+                .addComponent(jButton4)
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+
+        Agregar_panel.addTab("Mensajes ", jPanel6);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1271,11 +1390,16 @@ public class Examen extends javax.swing.JFrame {
             Personal x = new Personal(tf_ocupacion.getText(), tf_horario.getText(), (int) sp_semanas.getValue(), Integer.parseInt(tf_sueldo.getText()), (int) sp_id.getValue(), tf_nombre.getText(), (int) sp_edad.getValue(), sexo, estado, Double.parseDouble(tf_altura.getText()), Double.parseDouble(tf_peso.getText()));
             personas.add(x);
             JOptionPane.showMessageDialog(null, "Se agrego con exito");
-            personas.add(x);
-            JOptionPane.showMessageDialog(null, "Se agrego con exito");
             DefaultComboBoxModel dc = (DefaultComboBoxModel) cb_persona.getModel();
             dc.addElement(x);
             cb_persona.setModel(dc);
+            tf_usuario.setText("");
+            tf_contraseña.setText("");
+            sp_id.setValue(0);
+            sp_edad.setValue(0);
+            tf_nombre.setText("");
+            tf_altura.setText("");
+            tf_peso.setText("");
             Personal.setVisible(false);
         } catch (Exception e) {
             e.printStackTrace();
@@ -1299,16 +1423,23 @@ public class Examen extends javax.swing.JFrame {
                 estado = "Casado";
             }
             if (rb_sucursal.isSelected()) {
-                estado = "Gerente de sucursal";
+                cargo = "Gerente de sucursal";
             } else if (rb_planta.isSelected()) {
-                estado = "Gerente de planta";
+                cargo = "Gerente de planta";
             }
-            Gerente x = new Gerente(tf_usuario.getText(), tf_contraseña.getText(), cargo, (int) sp_id.getValue(), estado, (int) sp_edad.getValue(), sexo, estado, Double.parseDouble(tf_altura.getText()), Double.parseDouble(tf_peso.getText()));
+            Gerente x = new Gerente(tf_usuario.getText(), tf_contraseña.getText(), cargo, (int) sp_id.getValue(), tf_nombre.getText(), (int) sp_edad.getValue(), sexo, estado, Double.parseDouble(tf_altura.getText()), Double.parseDouble(tf_peso.getText()));
             personas.add(x);
             JOptionPane.showMessageDialog(null, "Se agrego con exito");
             DefaultComboBoxModel dc = (DefaultComboBoxModel) cb_persona.getModel();
             dc.addElement(x);
             cb_persona.setModel(dc);
+            tf_usuario.setText("");
+            tf_contraseña.setText("");
+            sp_id.setValue(0);
+            sp_edad.setValue(0);
+            tf_nombre.setText("");
+            tf_altura.setText("");
+            tf_peso.setText("");
             Gerente.setVisible(false);
         } catch (Exception e) {
             e.printStackTrace();
@@ -1346,6 +1477,13 @@ public class Examen extends javax.swing.JFrame {
         try {
             objetos.add(new Ropa(tf_tallaropa.getText(), tf_telaropa.getText(), tf_paisropa.getText(), c, ta_descripciono.getText(), tf_marca.getText(), tf_tamaño.getText(), tf_calidado.getText(), (Persona) cb_persona.getSelectedItem()));
             JOptionPane.showMessageDialog(null, "Se agrego con exito");
+            tf_tallaropa.setText("");
+            tf_telaropa.setText("");
+            tf_paisropa.setText("");
+            ta_descripciono.setText("");
+            tf_marca.setText("");
+            tf_tamaño.setText("");
+            tf_calidado.setText("");
             Ropa.setVisible(false);
         } catch (Exception e) {
             e.printStackTrace();
@@ -1357,6 +1495,13 @@ public class Examen extends javax.swing.JFrame {
         try {
             objetos.add(new Zapatos(Integer.parseInt(tf_tallazapatos.getText()), ta_descripcion.getText(), (int) sp_calidadzapatos.getValue(), c, ta_descripciono.getText(), tf_marca.getText(), tf_tamaño.getText(), tf_calidado.getText(), (Persona) cb_persona.getSelectedItem()));
             JOptionPane.showMessageDialog(null, "Se agrego con exito");
+            ta_descripciono.setText("");
+            tf_marca.setText("");
+            tf_tamaño.setText("");
+            tf_calidado.setText("");
+            tf_tallazapatos.setText("");
+            ta_descripcion.setText("");
+            sp_calidadzapatos.setValue(0);
             Zapatos.setVisible(false);
         } catch (Exception e) {
             e.printStackTrace();
@@ -1368,6 +1513,13 @@ public class Examen extends javax.swing.JFrame {
         try {
             objetos.add(new Hogar(ta_descripcionhogar.getText(), ta_instruccioneshogar.getText(), (int) sp_garantiahogar.getValue(), c, ta_descripciono.getText(), tf_marca.getText(), tf_tamaño.getText(), tf_calidado.getText(), (Persona) cb_persona.getSelectedItem()));
             JOptionPane.showMessageDialog(null, "Se agrego con exito");
+            ta_descripciono.setText("");
+            tf_marca.setText("");
+            tf_tamaño.setText("");
+            tf_calidado.setText("");
+            ta_descripcionhogar.setText("");
+            ta_instruccioneshogar.setText("");
+            sp_garantiahogar.setValue(0);
             Hogar.setVisible(false);
         } catch (Exception e) {
             e.printStackTrace();
@@ -1382,8 +1534,10 @@ public class Examen extends javax.swing.JFrame {
 
                 for (Persona p : personas) {
                     DefaultTableModel model = (DefaultTableModel) jt_personas.getModel();
-                    Object[] newrow = {p.getId(), p.getNombre(), p.getSexo(), ((Gerente) p).getCargo()};
-                    if (p instanceof Personal) {
+                    if (p instanceof Gerente) {
+                        Object[] newrow = {p.getId(), p.getNombre(), p.getSexo(), ((Gerente) p).getCargo()};
+                        model.addRow(newrow);
+                    } else if (p instanceof Personal) {
                         Object[] newrow2 = {
                             p.getId(),
                             p.getNombre(),
@@ -1391,7 +1545,6 @@ public class Examen extends javax.swing.JFrame {
                         };
                         model.addRow(newrow2);
                     }
-                    model.addRow(newrow);
                     jt_personas.setModel(model);
                 }
 
@@ -1425,9 +1578,18 @@ public class Examen extends javax.swing.JFrame {
     private void jb_eliminarpersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_eliminarpersMouseClicked
         // TODO add your handling code here:
         try {
-            DefaultComboBoxModel model = (DefaultComboBoxModel) cb_eliminarpers.getModel();
-            model.removeElement(cb_eliminarpers.getSelectedItem());
-            cb_eliminarpers.setModel(model);
+            String cont = JOptionPane.showInputDialog("Ingrese la contraseña:");
+            if (cont.equals("unitec1234")) {
+                for (Persona p : personas) {
+                    if (((Persona) cb_eliminarpers.getSelectedItem()).getNombre().equals(p.getNombre())) {
+                        personas.remove(p);
+                    }
+                }
+                DefaultComboBoxModel model = (DefaultComboBoxModel) cb_eliminarpers.getModel();
+                model.removeElement(cb_eliminarpers.getSelectedItem());
+                cb_eliminarpers.setModel(model);
+                JOptionPane.showMessageDialog(null, "Se elimino con exito");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1437,8 +1599,20 @@ public class Examen extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             if (Agregar_panel.getSelectedIndex() == 2) {
-                cb_eliminarpers.addItem(personas.toString());
-                cb_elimobje.addItem(objetos.toString());
+                DefaultComboBoxModel model = new DefaultComboBoxModel(personas.toArray());
+                cb_eliminarpers.setModel(model);
+                DefaultComboBoxModel model1 = new DefaultComboBoxModel(objetos.toArray());
+                cb_elimobje.setModel(model1);
+            } else if (Agregar_panel.getSelectedIndex() == 5) {
+                DefaultComboBoxModel model = new DefaultComboBoxModel(personas.toArray());
+                cb_emisor.setModel(model);
+                DefaultComboBoxModel model1 = new DefaultComboBoxModel(personas.toArray());
+                cb_receptor.setModel(model1);
+            } else if (Agregar_panel.getSelectedIndex() == 0) {
+                DefaultComboBoxModel model = new DefaultComboBoxModel(personas.toArray());
+                cb_modpers.setModel(model);
+                DefaultComboBoxModel model1 = new DefaultComboBoxModel(objetos.toArray());
+                cb_modobj.setModel(model1);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1448,9 +1622,14 @@ public class Examen extends javax.swing.JFrame {
     private void jb_eliminarobjetosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_eliminarobjetosMouseClicked
         // TODO add your handling code here:
         try {
-            DefaultComboBoxModel model = (DefaultComboBoxModel) cb_elimobje.getModel();
-            model.removeElement(cb_elimobje.getSelectedItem());
-            cb_elimobje.setModel(model);
+            String cont = JOptionPane.showInputDialog("Ingrese la contraseña:");
+            if (cont.equals("unitec1234")) {
+                objetos.remove(cb_elimobje.getSelectedIndex());
+                DefaultComboBoxModel model = (DefaultComboBoxModel) cb_elimobje.getModel();
+                model.removeElement(cb_elimobje.getSelectedItem());
+                cb_elimobje.setModel(model);
+                JOptionPane.showMessageDialog(null, "Se elimino con exito");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1553,6 +1732,33 @@ public class Examen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3MouseClicked
 
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        try {
+            Mensaje x = new Mensaje(((Persona) cb_receptor.getSelectedItem()).getNombre(), ta_mensaje.getText(), ((Persona) cb_emisor.getSelectedItem()).getNombre());
+            mensajes.add(x);
+            ((Persona) cb_receptor.getSelectedItem()).getMensajes().add(x);
+            ((Persona) cb_emisor.getSelectedItem()).getMensajes().add(x);
+            JOptionPane.showMessageDialog(null, "Su mensaje se ha enviado con exito");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jb_mostrarmsjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_mostrarmsjMouseClicked
+        // TODO add your handling code here:
+        try {
+            for (Mensaje m : mensajes) {
+                DefaultTableModel model = (DefaultTableModel) jt_mensajes.getModel();
+                Object[] newrow = {m.getEmisor(), m.getMensaje(), m.getReceptor()};
+                model.addRow(newrow);
+                jt_mensajes.setModel(model);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jb_mostrarmsjMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1607,12 +1813,15 @@ public class Examen extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cb_eliminarpers;
     private javax.swing.JComboBox<String> cb_elimobje;
+    private javax.swing.JComboBox<String> cb_emisor;
     private javax.swing.JComboBox<String> cb_modobj;
     private javax.swing.JComboBox<String> cb_modpers;
     private javax.swing.JComboBox<String> cb_persona;
+    private javax.swing.JComboBox<String> cb_receptor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1653,10 +1862,13 @@ public class Examen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1666,6 +1878,7 @@ public class Examen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1673,6 +1886,8 @@ public class Examen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JButton jb_agregargerente;
     private javax.swing.JButton jb_agregarhogar;
     private javax.swing.JButton jb_agregarpersona;
@@ -1685,6 +1900,8 @@ public class Examen extends javax.swing.JFrame {
     private javax.swing.JButton jb_emodpers;
     private javax.swing.JButton jb_listarobjetos;
     private javax.swing.JButton jb_listarpersonas;
+    private javax.swing.JButton jb_mostrarmsj;
+    private javax.swing.JTable jt_mensajes;
     private javax.swing.JTable jt_objetos;
     private javax.swing.JTable jt_personas;
     private javax.swing.JRadioButton rb_casado;
@@ -1714,6 +1931,7 @@ public class Examen extends javax.swing.JFrame {
     private javax.swing.JTextArea ta_descripciono;
     private javax.swing.JTextArea ta_descripciono1;
     private javax.swing.JTextArea ta_instruccioneshogar;
+    private javax.swing.JTextArea ta_mensaje;
     private javax.swing.JTextField tf_altura;
     private javax.swing.JTextField tf_altura1;
     private javax.swing.JTextField tf_calidado;

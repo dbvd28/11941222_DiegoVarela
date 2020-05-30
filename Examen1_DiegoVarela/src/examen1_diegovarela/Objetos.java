@@ -78,7 +78,7 @@ public class Objetos {
 
     @Override
     public String toString() {
-        return "Objetos{" + "descripcion=" + descripcion + ", marca=" + marca + ", persona=" + persona + '}';
+        return    marca + ", persona=" + persona + '}';
     }
     
 }
